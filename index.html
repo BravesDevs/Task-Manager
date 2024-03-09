@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body class="bg-gray-100 flex flex-col min-h-screen">
+    <nav class="bg-gray-800 py-4">
+      <div class="container mx-auto flex justify-between items-center px-4">
+        <div class="flex items-center">
+          <div>
+            <div class="border-r-2 border-white pr-4 mr-4">
+              <img src="assets/uw2.png" alt="UW Icon" class="w-19 h-14" />
+            </div>
+          </div>
+          <img
+            src="assets/concollege.png"
+            alt="Concollege Icon"
+            class="w-19 h-14 rounded-full"
+          />
+        </div>
+        <div class="flex items-center space-x-4">
+          <input
+            type="text"
+            placeholder="Search..."
+            class="bg-gray-700 text-white px-4 py-2 rounded focus:outline-none focus:bg-gray-600"
+            oninput="searchTasks(this.value)"
+          />
+          <button
+            onclick="openModal()"
+            class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+          >
+            Add Task
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      class="container mx-auto mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 flex-grow"
+    >
+      <!-- Low Priority Tasks -->
+      <div id="lowPriority" class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-xl font-bold mb-4">Low Priority</h2>
+        <div id="lowPriorityTasks"></div>
+      </div>
+      <!-- Medium Priority Tasks -->
+      <div id="mediumPriority" class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-xl font-bold mb-4">Medium Priority</h2>
+        <div id="mediumPriorityTasks"></div>
+      </div>
+      <!-- High Priority Tasks -->
+      <div id="highPriority" class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-xl font-bold mb-4">High Priority</h2>
+        <div id="highPriorityTasks"></div>
+      </div>
+    </div>
+
+    <!-- Modal for adding tasks -->
+    <div
+      id="modal"
+      class="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 hidden flex justify-center items-center"
+    >
+      <div class="bg-white p-6 rounded-lg shadow-lg w-1/2">
+        <h2 class="text-xl font-bold mb-4">Add Task</h2>
+        <input
+          type="text"
+          id="taskTitle"
+          placeholder="Task Title"
+          class="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4"
+        />
+        <textarea
+          placeholder="Description"
+          id="taskDescription"
+          class="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4"
+        ></textarea>
+        <input
+          type="text"
+          id="assignedTo"
+          placeholder="Assigned To"
+          class="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4"
+        />
+        <input
+          type="date"
+          id="dueDate"
+          placeholder="Due Date"
+          class="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4"
+        />
+        <select
+          id="priority"
+          class="w-full border border-gray-300 rounded-lg px-4 py-2 mb-4"
+        >
+          <option value="low">Low Priority</option>
+          <option value="medium">Medium Priority</option>
+          <option value="high">High Priority</option>
+        </select>
+        <button
+          id="addTask"
+          class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+        >
+          Add Task
+        </button>
+        <button
+          onclick="closeModal()"
+          class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 ml-4"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-4 mt-auto">
+      <div class="container mx-auto text-center">
+        <p>
+          &copy; 2024 Devang Parekh Productions<br />
+          Web Development, Conestoga College<br />
+          MMath in Computational Mathematics, University of Waterloo
+        </p>
+      </div>
+    </footer>
+    <script src="main.js"></script>
+  </body>
+</html>
